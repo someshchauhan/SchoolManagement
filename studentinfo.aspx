@@ -88,8 +88,8 @@
         #Button3:hover,#Button4:hover
         {
             color:red;
-            letter-spacing:2px;
-            background:#d6eb1b
+            
+            background:#d6eb1b;
         }
 
         .container .d1 .sup

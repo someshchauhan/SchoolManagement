@@ -22,14 +22,28 @@ namespace SchoolManagement
         protected void Button2_Click(object sender, EventArgs e)
         {
             input.Visible = true;
-            if(id.Text=="dronz28" && pass.Text=="somesh")
+            if(id.Text==string.Empty || pass.Text==string.Empty)
             {
-                Response.Redirect("School.aspx");
+                Label1.Text = "please, enter id and password first";
             }
             else
             {
-                Label1.Text = "Wrong ID or Password, Try again...";
+                
+                if (id.Text == "dronz28" && pass.Text == "somesh")
+                {
+                    Response.Redirect("School.aspx");
+                }
+                else
+                {
+                    Label1.Text = "Wrong ID or Password, Try again...";
+                }
             }
         }
+
+        protected void Close_Click(object sender, EventArgs e)
+        {
+            input.Visible=false;
+        }
+
     }
 }
