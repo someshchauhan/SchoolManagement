@@ -8,21 +8,43 @@
     <style>
         body
         {
-            background: linear-gradient(to right, rgb(9, 243, 222), rgb(17, 115, 145));
-            
+            background-color: rgba(0,0,0,0.81);
+        }
+
+        .container
+        {
+            background-image: url(dpsscho.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: relative;
+            height: 120vh;
+        }
+
+        .container::before
+        {
+            content: "";
+            background-color:rgba(0,0,0,0.81);
+            position:absolute;
+            top:0;
+            left:0;
+            width: 100%;
+            height: 100%;
         }
 
         .nav
         {
-            border-bottom: 3px solid red;
-            border-top: 3px solid red;
-            border-radius: 30px;
+            margin-top: 20px;
+            position: absolute;
+            width: 100%;
         }
+        
 
         .nav #Image1
         {
             margin-left:10px;
             border-radius:30px;
+            height: 50px;
+            width: 90px;
         }
 
         .nav .links
@@ -34,15 +56,67 @@
 
         .links a
         {
+            
             text-decoration:none;
-            padding-left: 40px;
-            padding-right: 40px;
+            color: aliceblue;
+            margin-right:40px;
+            font-family: Rockwell;
+            letter-spacing: 1px;
         }
 
         .links a:hover
         {
-            letter-spacing:2px;
-            color:red;
+            color:#000;
+            font-weight: 300;
+        }
+
+        .links .students
+        {
+            position:relative;
+            display:inline;
+        }
+
+        .links .students .students1
+        {
+            position: absolute;
+            display: none;
+            padding: 30px;
+            background: rgba(255,255,255,0.5);
+            border: 3px solid rgba(255,255,255,0.6);
+            border-radius: 10px;
+        }
+
+        .links .students .students1 a
+        {
+            position: relative;
+            padding-left:10px;
+            padding-right:10px;
+            color:aliceblue;
+            letter-spacing: 1px;
+            margin-top:10px;
+            border-bottom: 3px solid rgba(255,255,255,0.5);
+            display: block;
+            text-transform: uppercase;
+}
+        .links .students .students1 a:hover
+        {
+            color: black;
+
+        }
+
+        
+
+        .links .students:hover .students1
+        {
+            display: block;
+        }
+
+        #heading
+        {
+            position: absolute;
+            color: aliceblue;
+            margin-left: 40px;
+            margin-top: 100px;
         }
 
         .main {
@@ -50,16 +124,20 @@
             justify-content: center;
             align-items: center;
             padding: 100px;
+            position: absolute;
+            color: aliceblue;
+            margin-top: 100px;
         }
-        .container
+        .cont
         {
+           margin-left: 100px;
            padding:50px;
            border: 3px solid rgba(255,255,255,0.1);
            border-bottom:3px solid red;
            border-top:3px solid red;
            border-radius:30px;
            box-shadow: 0 15px 15px rgba(0,0,0,0.3);
-           
+           backdrop-filter: blur(15px);
         }
 
         #Roll,#Name,#Father,#Mother,#Contact,#Address,#Class
@@ -95,22 +173,32 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="nav" style="background-color: #FFFFFF">
+        <div class="container">
+            <div class="nav">
             
-            <a href="School.aspx"><asp:Image ID="Image1" runat="server" ImageUrl="dpslogo.jpg" Width="61px" /></a>
+            <a href="School.aspx"><asp:Image ID="Image1" runat="server" ImageUrl="dpslogo.jpg" /></a>
             
             <div class="links">
-            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/admission.aspx">student admission</asp:HyperLink>
+            <div class="students">
+                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="#">student admission</asp:HyperLink>
+                <div class="students1">
+                    <a href="stuadmission.aspx">admission</a>
+                    <a href="studentinfo.aspx">information</a>
+                    <a href="updatestu.aspx">update</a>
+                    <a href="deletestuinfo.aspx">delete</a>
+                    <a href="Classlist.aspx">class list</a>
+                </div>
+            </div>
             <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/teachers.aspx">teachers</asp:HyperLink>
             <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/principal.aspx">principal</asp:HyperLink>
             </div>
            
         </div>
 
-        <h1>STUDENT'S ADMISSION</h1>
+        <h1 id="heading">STUDENT'S ADMISSION</h1>
 
         <div class="main">
-            <div class="container">
+            <div class="cont">
             <div class="d1">
                 <asp:Label ID="Label1" runat="server" Text="Roll Number: "></asp:Label>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -172,6 +260,7 @@
                     <asp:Button ID="Button1" runat="server" Text="Submit" OnClick="Button1_Click" />
                 </div>
                 <marquee scrollamount="10" direction="left"><asp:Label ID="Label8" runat="server" Text=""></asp:Label></marquee>
+        </div>
         </div>
         </div>
     </form>
